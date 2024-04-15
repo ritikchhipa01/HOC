@@ -3,7 +3,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react';
 
 
-const addDataToFireStore = ()
+
 
 const page = () => {
   return (
