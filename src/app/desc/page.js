@@ -26,7 +26,7 @@ const Page = () => {
                   alt="community Image"
                 ></img>
                 <div className=" bg-black p-3 rounded-lg  absolute bottom-0 translate-y-1/2 left-7">
-                  <img className=" w-16 h-16" src="clogo.png" alt=""></img>
+                  <img className=" w-16 h-16" src="/clogo.png" alt=""></img>
                 </div>
               </div>
               <div className=" mt-3 mr-8 z-20">
