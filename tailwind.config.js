@@ -12,8 +12,9 @@ module.exports = {
         primary: "#f13a01",
         button: "#7B61FF",
         background: "#131516",
+        orange: "#F7981A",
       }
     },
   },
-  
+
 }

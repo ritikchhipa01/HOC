@@ -3,11 +3,11 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className=' bg-background px-10 sm:px-20  py-16  '>
-            <div className=' flex flex-wrap space-x-5 md:space-x-0  justify-between items-center border-t-2  border-gradient sm:px-5 pt-16 border-white'>
+        <footer className=' bg-background px-8 sm:px-20  py-16  '>
+            <div className=' flex flex-wrap space-x-5 md:space-x-0  justify-between items-center border-t-2  border-gradient sm:px-5 pt-8 sm:pt-16 border-white'>
 
 
-                <div className='flex   space-x-5 items-center'>
+                <div className='flex space-x-3  sm:space-x-5 items-center'>
                     <img src='/logo.svg' alt='logo'></img>
                     <div className=' md:block hidden order-last ' >
                         <div className=''>
@@ -60,17 +60,17 @@ const Footer = () => {
                     <div className=''>
                         <ul className="flex   md:p-0 mt-4 font-medium   md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
                             <li>
-                                <Link href="#" className="block py-2 pr-3 text-white  rounded md:bg-transparent font-bold hover:font-extrabold md:p-0 " aria-current="page">About</Link>
+                                <Link href="#" className="block py-2 pr-1 text-white  rounded md:bg-transparent font-bold hover:font-extrabold md:p-0 " aria-current="page">About</Link>
                             </li>
 
                             <li>
-                                <Link href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Communities</Link>
+                                <Link href="#" className="block py-2 px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Communities</Link>
                             </li>
                             <li>
-                                <Link href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Resources</Link>
+                                <Link href="#" className="block py-2 px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Resources</Link>
                             </li>
                             <li>
-                                <Link href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Help</Link>
+                                <Link href="#" className="block py-2 px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-extrabold md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Help</Link>
                             </li>
                         </ul>
                     </div>

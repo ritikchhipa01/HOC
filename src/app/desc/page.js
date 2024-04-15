@@ -49,7 +49,7 @@ const Page = () => {
             <div className=" mt-8 flex flex-col border-2 gap-y-5  border-[#4EBEF6] rounded-lg px-3 py-5">
               <h2 className=" text-[#B7E0F3] text-2xl font-bold"> Jaipur Trekkers Community </h2>
               <div className=" flex items-center gap-x-3">
-                <button className=" bg-[#4EBEF6] px-3 text-white rounded-full py-1">
+                <button className=" sm:mx-0 mx-auto bg-[#4EBEF6] px-3 text-white rounded-full py-1">
                   Join the community
                 </button>
                 <img src="/share2.svg"
@@ -65,8 +65,8 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <div className=" w-full sm:w-1/2 px-5 text-white">
-            <div className=" mt-8">
+          <div className=" flex flex-col w-full sm:w-1/2 px-5 text-white">
+            <div className=" order-5 sm:order-1 mt-8">
               <div className=" bg-gradient-to-r from-[#08ACFE]/80   to-yellow-200 p-4  rounded-xl">
                 <p>Why You should Join ?</p>
                 <p>
@@ -74,15 +74,15 @@ const Page = () => {
                 </p>
               </div>
 
-              <button className=" my-7 bg-[#4EBEF6] px-3 text-white rounded-full py-1" onClick={() => document.getElementById('my_modal_3').showModal()}>
+              <button className=" order-4  my-7 bg-[#4EBEF6] px-3 text-white rounded-full py-1" onClick={() => document.getElementById('my_modal_3').showModal()}>
                 Join the community
               </button>
             </div>
-            <div className="">
-              <h2 className=" mb-2">Past Events</h2>
+            <div className=" mt-3 order-2 sm:order-2">
+              <h2 className=" my-2">Past Events</h2>
               <Carousal />
             </div>
-            <div className=" mt-6">
+            <div className=" order-1 sm:order-3 mt-6">
               <h2>Members</h2>
               <ul className="mt-2 flex  gap-x-4">
                 <li className=" ">
@@ -100,7 +100,7 @@ const Page = () => {
               </ul>
             </div>
 
-            <div className=" mt-6 text-white bg-background">
+            <div className=" order-6 sm:order-4  mt-6 text-white bg-background">
               <h2>Community Builders</h2>
               <div className=" mt-2 flex gap-5 text-white">
                 <div className=" max-w-fit gap-y-3 flex flex-col items-center">
@@ -141,7 +141,7 @@ const Page = () => {
         {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
         <dialog id="my_modal_3" className="modal    bg-black/80">
-          <div className="modal-box bg-white w-[400px] rounded-badge">
+          <div className="modal-box bg-white max-w-[90%] sm:w-[400px] rounded-badge">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2">✕</button>
