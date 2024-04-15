@@ -5,7 +5,7 @@ import React from 'react'
 const CommunityCard = () => {
     return (
         <Link href={'/desc'}>
-        <div className={` flex items-center w-[460px] h-[700px] relative   object-fill `}>
+        <div className={` flex items-center w-[95%] h-auto mx-auto sm:w-[460px] sm:h-[700px] relative   object-fill `}>
             <img className='   w-full h-full  rounded-xl' src='/pranay.png' width={100} height={100} alt='community Image'></img>
 
             <div className='flex  w-[94%]  mx-[3%] p-4 gap-x-2    items-start  text-white rounded-[30px]  absolute z-10 bottom-8   bg-black/70 '>
