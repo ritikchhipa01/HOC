@@ -1,12 +1,13 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// let item;
-// if (typeof window !== 'undefined') {
-//     item = 
-// }
+let item;
+if (typeof window !== 'undefined') {
+    item = JSON.parse(localStorage.getItem("cards") || "[]");
+}
+
 const initialState = {
     number: 0,
-    data: JSON.parse(localStorage.getItem("cards")) || [],
+    data: item,
 }
 const Slice = createSlice({
     name: "user",
@@ -17,10 +18,10 @@ const Slice = createSlice({
         },
         addData: (state, action) => {
             // console.log(action.payload);
-                
-                state.data = action.payload;
-                let card = JSON.stringify(state.data);
-                localStorage.setItem("cards", card);
+
+            state.data = action.payload;
+            let card = JSON.stringify(state.data);
+            localStorage.setItem("cards", card);
         }
     }
 })
