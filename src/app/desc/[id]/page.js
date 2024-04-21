@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import Carousal from "../../components/layout/Carousal";
 
 const Page = ({ params }) => {
+  const communitydata = useSelector((store) => store.data);
   console.log("params ", params);
   // const [show, setShow] = useState(false);
-  const communitydata = useSelector((store) => store.data);
   // console.log(communitydata);
   // if (!communitydata) return;
 

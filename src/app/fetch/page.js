@@ -3,6 +3,7 @@
 import { useSelector } from 'react-redux';
 
 const page = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const communitydata = useSelector((store) => store.data);
     // console.log(communitydata[0]);
 

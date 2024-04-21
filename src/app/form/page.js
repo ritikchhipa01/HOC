@@ -237,7 +237,7 @@ const FormDataComponent = () => {
     dispatch(addCounter(count));
   }
 
-  const number = useSelector((store) => store.number);
+  // const number = useSelector((store) => store.number);
   const communitydata = useSelector((store) => store.data);
   // console.log(communitydata)
 
