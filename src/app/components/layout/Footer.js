@@ -27,7 +27,7 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className=' flex items-center space-x-2'>
+                        <Link href={'/host'} className=' flex items-center space-x-2'>
                             <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600  bg-clip-text text-transparent via-transparent" >
                                 Host Your Commmunity On HOC
                             </p>
@@ -35,15 +35,15 @@ const Footer = () => {
                                 <path d="M19.6086 2.36353H9.70513C5.40338 2.36353 2.83887 4.92803 2.83887 9.22979V19.1215C2.83887 23.435 5.40338 25.9996 9.70513 25.9996H19.5968C23.8986 25.9996 26.4631 23.435 26.4631 19.1333V9.22979C26.4749 4.92803 23.9104 2.36353 19.6086 2.36353ZM20.8613 14.5715C20.8613 15.0561 20.4595 15.4579 19.975 15.4579C19.4904 15.4579 19.0886 15.0561 19.0886 14.5715V11.0025L9.96513 20.126C9.78786 20.3033 9.56332 20.386 9.33878 20.386C9.11423 20.386 8.88969 20.3033 8.71242 20.126C8.3697 19.7833 8.3697 19.216 8.71242 18.8733L17.8359 9.74978H14.2669C13.7823 9.74978 13.3805 9.34797 13.3805 8.86343C13.3805 8.37889 13.7823 7.97708 14.2669 7.97708H19.975C20.4595 7.97708 20.8613 8.37889 20.8613 8.86343V14.5715Z" fill="url(#paint0_linear_1_1583)" />
                                 <defs>
                                     <linearGradient id="paint0_linear_1_1583" x1="2.10061" y1="10.4884" x2="41.9701" y2="23.0337" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#732C7A" />
-                                        <stop offset="1" stop-color="white" />
+                                        <stop stopColor="#732C7A" />
+                                        <stop offset="1" stopColor="white" />
                                     </linearGradient>
                                 </defs>
                             </svg>
-                        </div>
+                        </Link>
                     </div>
                 </div>
-                <div className=' '>
+                <div  className=' '>
                     <ul className='flex gap-x-1'>
                         <li>
                             <img className=' w-6 h-6 sm:w-8 sm;h-8' src='/email.svg' alt='insta'></img>
@@ -74,6 +74,7 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
+                    <Link href={'/host'}>                    
                     <div className=' flex items-center space-x-2'>
                         <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600  bg-clip-text text-transparent via-transparent" >
                             Host Your Commmunity On HOC
@@ -82,12 +83,13 @@ const Footer = () => {
                             <path d="M19.6086 2.36353H9.70513C5.40338 2.36353 2.83887 4.92803 2.83887 9.22979V19.1215C2.83887 23.435 5.40338 25.9996 9.70513 25.9996H19.5968C23.8986 25.9996 26.4631 23.435 26.4631 19.1333V9.22979C26.4749 4.92803 23.9104 2.36353 19.6086 2.36353ZM20.8613 14.5715C20.8613 15.0561 20.4595 15.4579 19.975 15.4579C19.4904 15.4579 19.0886 15.0561 19.0886 14.5715V11.0025L9.96513 20.126C9.78786 20.3033 9.56332 20.386 9.33878 20.386C9.11423 20.386 8.88969 20.3033 8.71242 20.126C8.3697 19.7833 8.3697 19.216 8.71242 18.8733L17.8359 9.74978H14.2669C13.7823 9.74978 13.3805 9.34797 13.3805 8.86343C13.3805 8.37889 13.7823 7.97708 14.2669 7.97708H19.975C20.4595 7.97708 20.8613 8.37889 20.8613 8.86343V14.5715Z" fill="url(#paint0_linear_1_1583)" />
                             <defs>
                                 <linearGradient id="paint0_linear_1_1583" x1="2.10061" y1="10.4884" x2="41.9701" y2="23.0337" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#732C7A" />
-                                    <stop offset="1" stop-color="white" />
+                                    <stop stopColor="#732C7A" />
+                                    <stop offset="1" stopColor="white" />
                                 </linearGradient>
                             </defs>
                         </svg>
                     </div>
+                    </Link>
                 </div>
             </div>
         </footer>
