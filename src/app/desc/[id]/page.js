@@ -2,14 +2,38 @@
 "use client"
 import { useSelector } from "react-redux";
 import Carousal from "../../components/layout/Carousal";
+import { db } from '../../firebaseConfig'
+import { addDoc, collection } from 'firebase/firestore'
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+async function addDataToFireStore(name, phone) {
+  console.log(name, phone);
+  try {
+    const docRef = await addDoc(collection(db, "userModel"), {
+      name,
+      phone,
+
+    });
+    console.log("Document written with ID :", docRef.id);
+    return true;
+  }
+  catch (e) {
+    console.error("Error adding document: ", e);
+    return false;
+  }
+}
 const Page = ({ params }) => {
   const communitydata = useSelector((store) => store.data);
-  console.log("params ", params);
+  // console.log("params ", params);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   // const [show, setShow] = useState(false);
   // console.log(communitydata);
   // if (!communitydata) return;
 
+  if (!communitydata) return;
   const filtered = (communitydata.filter((community) => {
     return community.id == params.id;
   }));
@@ -17,8 +41,46 @@ const Page = ({ params }) => {
   // console.log(filtered[0].builder);
   const description = filtered[0];
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !phone) alert('Please fill out all fields!');
+    const added = await addDataToFireStore(name, phone);
+    if (added) {
+      toast.success('SuccessFully Joined', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+  
+      });
+      document.getElementById('my_modal_3').close();
+      document.getElementById('my_modal_2').showModal();
+
+    }
+  }
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText('Copy this text to clipboard');
+    toast.success('link copied to Clipboard', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+
+    });
+  }
+
   return (
     <>
+      <ToastContainer className={"z-100"} limit={1} />
       {description &&
         <div className=" bg-background pt-10">
           <div className=" flex flex-col sm:flex-row  w-full sm:w-[69%] mx-auto gap-10  ">
@@ -34,7 +96,7 @@ const Page = ({ params }) => {
                     alt="community Image"
                   />
                   <div className=" bg-black p-3 rounded-lg  absolute bottom-0 translate-y-1/2 left-7">
-                    <img className=" w-16 h-16" src={description.image1} alt="" />
+                    <img className=" w-16 h-16 rounded-full object-cover" src={description.image1} alt="" />
                   </div>
                 </div>
                 <div className=" mt-3 mr-8 z-20">
@@ -63,6 +125,7 @@ const Page = ({ params }) => {
                   <img src="/share2.svg"
                     alt=""
                     className=" "
+                    onClick={() => handleCopy()}
                   >
 
                   </img>
@@ -146,24 +209,24 @@ const Page = ({ params }) => {
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2">✕</button>
               </form>
-              <img className=" mx-auto" src={description.image1} alt="logo community"></img>
+              <img className=" w-20 h-20 object-fill rounded-full my-5 mx-auto" src={description.image1} alt="logo community"></img>
               <p className="py-4 text-3xl  text-black text-center font-semibold">{description.CommunityName}</p>
 
               <form className="  px-6">
                 <div className="  flex flex-col  mx-auto ">
                   <label htmlFor="email" className="block text-sm font-medium leading-5  text-[#606367]">Your Name</label>
                   <div className="mt-1  relative rounded-md shadow-sm">
-                    <input id="name" name="name" placeholder="" type="text" required className=" bg-transparent  w-full block   px-3 py-2 border border-black rounded-full  focus:outline-none  transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input id="name" name="name" placeholder="" type="text" value={name} onChange={(e) => setName(e.target.value)} required className=" bg-transparent  w-full block   px-3 py-2 border border-black rounded-full  focus:outline-none  transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                   </div>
                 </div>
                 <div className=" mt-5  flex flex-col  mx-auto ">
                   <label htmlFor="email" className="block text-sm font-medium leading-5  text-[#606367">Your phone</label>
                   <div className="mt-1  relative rounded-md shadow-sm">
-                    <input id="name" name="name" placeholder="" type="text" required className=" bg-transparent  w-full block   px-3 py-2 border border-black rounded-full  focus:outline-none  transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input id="name" name="name" placeholder="" type="text" value={phone} onChange={(e) => setPhone(e.target.value)} required className=" bg-transparent  w-full block   px-3 py-2 border border-black rounded-full  focus:outline-none  transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                   </div>
                 </div>
                 <div className=" flex justify-center">
-                  <button className="  bg-[#414141]  px-4 py-2 rounded-full text-white shadow-xl shadow-black/40 mt-4">
+                  <button onClick={(e) => handleSubmit(e)} className="  bg-[#414141]  px-4 py-2 rounded-full text-white shadow-xl shadow-black/40 mt-4">
                     Join Now
                   </button>
                 </div>
@@ -172,6 +235,50 @@ const Page = ({ params }) => {
             </div>
           </dialog>
         </div>
+      }
+      {description &&
+        <div>
+          {/* You can open the modal using document.getElementById('ID').showModal() method */}
+          <dialog id="my_modal_2" className="modal    bg-black/80">
+            <div className="modal-box  bg-white max-w-[90%] sm:w-[400px] rounded-badge">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2">✕</button>
+              </form>
+              <img className=" w-20 h-20 object-fill rounded-full my-5 mx-auto" src={description.image1} alt="logo community"></img>
+              <p className="py-4 text-3xl  text-black text-center font-semibold">{description.CommunityName}</p>
+
+
+              <h2 className=" text-[#606367] px-6 text-center">Congrats!! <br></br>they will soon accept your request</h2>
+
+              <div className=" flex flex-col items-center">
+                <div className=" mt-3  z-20">
+                  <ul className=" flex gap-x-2 bg-black">
+                    <li>
+                      <img src="/instagram.svg" alt="" />
+                    </li>
+                    <li>
+                      <img src="/instagram.svg" alt="" />
+                    </li>
+                    <li>
+                      <img src="/email.svg" alt="" />
+                    </li>
+                    <li>
+                      <img src="/twitter.svg" alt="" />
+                    </li>
+                  </ul>
+                </div>
+                <div className=" flex justify-center">
+                  <button className="  bg-[#414141]  px-4 py-2 rounded-full text-white shadow-xl shadow-black/40 mt-4">
+                    Follow On Social
+                  </button>
+                </div>
+                <p className=" mt-4 text-xs text-[#606367] text-center">connect with this community on instagram</p>
+              </div>
+            </div>
+          </dialog>
+        </div>
+
       }
     </>
   );

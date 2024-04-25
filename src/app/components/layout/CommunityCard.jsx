@@ -31,7 +31,7 @@ const CommunityCard = ({ card }) => {
                                 Explore Now
                             </Link>
                         </div>
-                        <div className=' mr-2 mt-2   flex  flex-1 gap-x-1 items-center justify-end' onClick={() => document.getElementById('my_modal_3').showModal()}>
+                        <div className=' mr-2 mt-2   flex  flex-1 gap-x-1 items-center justify-end cursor-pointer' onClick={() => document.getElementById('my_modal_3').showModal()}>
                             Join Now
                             <img src='/arrow-right.svg' alt=''></img>
                         </div>
@@ -47,7 +47,7 @@ const CommunityCard = ({ card }) => {
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2">✕</button>
                         </form>
-                        <img className=" mx-auto" src={card.image1.split('&')[0]} alt="logo community"></img>
+                        <img className="w-16 h-16 my-3 object-fill mx-auto" src={card.image1.split('&')[0]} alt="logo community"></img>
                     <p className="py-4 text-3xl  text-black text-center font-semibold">{card.CommunityName}</p>
 
                         <form className="  px-6">

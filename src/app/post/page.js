@@ -8,7 +8,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 
 
-async function addDataToFireStore(name, city, description, builder, tags, reason, imageUrl1, imageUrl2, theme) {
+async function addDataToFireStore(name, city, description, builder, tags, reason, imageUrl1, imageUrl2, theme, email, twitterLink, instaLink, faceBook,communityLink) {
 
   const tag = await tags.split(',');
   const build = await builder.split(',');
@@ -23,7 +23,14 @@ async function addDataToFireStore(name, city, description, builder, tags, reason
       image1: imageUrl1,
       image2: imageUrl2,
       cityName: city,
-      theme : theme,
+      theme: theme,
+      social: {
+        email,
+        twitterLink,
+        instaLink,
+        faceBook
+      },
+      communityLink,
     });
     console.log("Document written with ID :", docRef.id);
     return true;
@@ -43,7 +50,12 @@ const page = () => {
   const [builder, setBuilder] = useState("");
   const [tags, setTags] = useState("");
   const [reason, setReason] = useState("");
+  const [instaLink, setInstaLink] = useState("");
+  const [email, setEmail] = useState("");
+  const [twitterLink, setTwitterLink] = useState("");
   const [theme, setTheme] = useState("");
+  const [faceBook, setFacebook] = useState("");
+  const [communityLink, setCommunityLink] = useState("");
 
 
   const [imageUrl1, setImageUrl1] = useState(null);
@@ -51,8 +63,8 @@ const page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !description || !builder || !tags || !reason || !imageUrl1 || !imageUrl2 ) alert('Please fill out all fields!');
-    const added = await addDataToFireStore(name, city, description, builder, tags, reason, imageUrl1, imageUrl2, theme);
+    if (!name || !description || !builder || !tags || !reason || !imageUrl1 || !imageUrl2) alert('Please fill out all fields!');
+    const added = await addDataToFireStore(name, city, description, builder, tags, reason, imageUrl1, imageUrl2, theme, email, twitterLink, instaLink, faceBook,communityLink);
     if (added) {
       setName("");
       setDescription("");
@@ -97,10 +109,10 @@ const page = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+    <div className=" w-full sm:max-w-2xl mx-auto  p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Add Community Data to Firestore</h2>
-      <form onSubmit={handleSubmit} className=' max-w-md'>
-        <div>
+      <form onSubmit={handleSubmit} className=' w-full flex flex-wrap'>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="" className="block text-gray-600">Community Name</label>
           <input
             type="text"
@@ -108,10 +120,10 @@ const page = () => {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full border-gray-300 rounded-md p-2"
+            className="w-full  bg-transparent border border-white rounded-md p-2"
           />
         </div>
-        <div>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="" className="block text-gray-600">City Name</label>
           <input
             type="text"
@@ -122,10 +134,70 @@ const page = () => {
             className="w-full border-gray-300 rounded-md p-2"
           />
         </div>
-        <div>
+
+        {/* Community link */}
+        <div className=' w-full sm:w-auto'>
+          <label htmlFor="" className="block text-gray-600">Whatsapp Community Link</label>
+          <input
+            type="url"
+            id="description"
+            name="description"
+            value={communityLink}
+            onChange={(e) => setCommunityLink(e.target.value)}
+            className="w-full border-gray-300 rounded-md p-2"
+          />
+        </div>
+        {/* Insta link */}
+        <div className=' w-full sm:w-auto'>
+          <label htmlFor="" className="block text-gray-600">Instagram Link</label>
+          <input
+            type="url"
+            id="description"
+            name="description"
+            value={instaLink}
+            onChange={(e) => setInstaLink(e.target.value)}
+            className="w-full border-gray-300 rounded-md p-2"
+          />
+        </div>
+        {/* Twitter */}
+        <div className=' w-full sm:w-auto'>
+          <label htmlFor="" className="block text-gray-600">Twitter Link</label>
+          <input
+            type="url"
+            id="description"
+            name="description"
+            value={twitterLink}
+            onChange={(e) => setTwitterLink(e.target.value)}
+            className="w-full border-gray-300 rounded-md p-2"
+          />
+        </div>
+        {/* Email */}
+        <div className=' w-full sm:w-auto'>
+          <label htmlFor="" className="block text-gray-600">Email Link</label>
+          <input
+            type="email"
+            id="description"
+            name="description"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border-gray-300 rounded-md p-2"
+          />
+        </div>
+        <div className=' w-full sm:w-auto'>
+          <label htmlFor="" className="block text-gray-600">FaceBook Link</label>
+          <input
+            type="url"
+            id="description"
+            name="description"
+            value={faceBook}
+            onChange={(e) => setFacebook(e.target.value)}
+            className="w-full border-gray-300 rounded-md p-2"
+          />
+        </div>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="" className="block text-gray-600">Community Description</label>
           <textarea
-            rows={5}
+            rows={2}
             type="text"
             id="description"
             name="description"
@@ -134,10 +206,10 @@ const page = () => {
             className="w-full border-gray-300 rounded-md p-2"
           />
         </div>
-        <div>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="" className="block text-gray-600">Joining reason</label>
           <textarea
-            rows={5}
+            rows={2}
             type="text"
             id="description"
             name="description"
@@ -146,7 +218,7 @@ const page = () => {
             className="w-full border-gray-300 rounded-md p-2"
           />
         </div>
-        <div>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="" className="block text-gray-600">Community Builder's name</label>
           <textarea
             type="text"
@@ -157,7 +229,7 @@ const page = () => {
             className="w-full border-gray-300 rounded-md p-2"
           />
         </div>
-        <div>
+        <div className=' w-full sm:w-auto'>
           <label htmlFor="tags" className="block text-gray-600">Tags (comma-separated)</label>
           <textarea
             type="text"
@@ -168,21 +240,27 @@ const page = () => {
             className="w-full border-gray-300 rounded-md p-2"
           />
         </div>
-        <h2> Select Commmunity theme</h2>
-        <div className=' flex gap-x-3 my-4'>
-          <div className={` w-8 h-8  cursor-pointer rounded-full bg-orange border-black ${theme == "orange" ? "border-2": " border-0"}`} onClick={() => setTheme("orange")}></div>
-          <div className={` w-8 h-8 rounded-full bg-pink-500  border-black ${theme == "pink" ? "border-2": " border-0"}`} onClick={() => setTheme("pink")}></div>
-          <div className={` w-8 h-8 rounded-full bg-red-500 border-black ${theme == "red" ? "border-2": " border-0"}`} onClick={() => setTheme("red")}></div>
-          <div className={` w-8 h-8 rounded-full bg-blue-500 border-black ${theme == "blue" ? "border-2": " border-0"}`} onClick={() => setTheme("blue")}></div>
+        <div className=' w-full sm:w-auto'>
+          <h2> Select Commmunity theme</h2>
+          <div className=' flex gap-x-3 my-4'>
+            <div className={` w-8 h-8  cursor-pointer rounded-full bg-orange border-black ${theme == "orange" ? "border-2" : " border-0"}`} onClick={() => setTheme("orange")}></div>
+            <div className={` w-8 h-8 rounded-full bg-pink-500  border-black ${theme == "pink" ? "border-2" : " border-0"}`} onClick={() => setTheme("pink")}></div>
+            <div className={` w-8 h-8 rounded-full bg-red-500 border-black ${theme == "red" ? "border-2" : " border-0"}`} onClick={() => setTheme("red")}></div>
+            <div className={` w-8 h-8 rounded-full bg-blue-500 border-black ${theme == "blue" ? "border-2" : " border-0"}`} onClick={() => setTheme("blue")}></div>
+          </div>
         </div>
-        <h2>Commmunity Logo</h2>
-        <div className=' flex justify-between'>
-          <input type='file' onChange={(e) => handleChange(e, 1)} ></input>
+        <div className='w-full sm:w-auto flex flex-wrap justify-between items-center'>
+          <div className=' flex flex-col'>
+            <label>Commmunity Logo</label>
+            <input type='file' onChange={(e) => handleChange(e, 1)} ></input>
+          </div>
           <button className=' bg-black text-white px-4 rounded-md ' onClick={(e) => handleUpload(e, 1)}> Upload</button>
         </div>
-        <h2>Cover Photo</h2>
-        <div>
-          <input type='file' onChange={(e) => handleChange(e, 2)} ></input>
+        <div className='w-full sm:w-auto flex justify-between items-center flex-wrap'>
+          <div className=' flex flex-col'>
+            <label>Cover Photo</label>
+            <input type='file' onChange={(e) => handleChange(e, 2)} ></input>
+          </div>
           <button className=' bg-black text-white px-4 rounded-md' onClick={(e) => handleUpload(e, 2)}> Upload </button>
         </div>
 
@@ -194,3 +272,7 @@ const page = () => {
 }
 
 export default page
+
+
+
+

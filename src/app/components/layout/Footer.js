@@ -28,7 +28,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <Link href={'/host'} className=' flex items-center space-x-2'>
-                            <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600  bg-clip-text text-transparent via-transparent" >
+                            <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 from-10% via-purple-300 via-[percentage:40%_70%] ]  to-purple-600 to-100%  bg-clip-text text-transparent via-transparent" >
                                 Host Your Commmunity On HOC
                             </p>
                             <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@ const Footer = () => {
                     </div>
                     <Link href={'/host'}>                    
                     <div className=' flex items-center space-x-2'>
-                        <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600  bg-clip-text text-transparent via-transparent" >
+                        <p className=" max-w-fit font-bold bg-gradient-to-r from-blue-400 from-10% via-purple-300 via-[percentage:40%_70%] ]  to-purple-600 to-100%  bg-clip-text text-transparent via-transparent" >
                             Host Your Commmunity On HOC
                         </p>
                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
