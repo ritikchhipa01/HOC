@@ -13,14 +13,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <StateProvider>
-      <html lang="en">
-        <body className={roboto.className}>
-          <Navbar />
+    <html lang="en">
+      <body className={roboto.className}>
+        <Navbar />
+        <StateProvider>
           {children}
-          <Footer />
-        </body>
-      </html>
-    </StateProvider>
+        </StateProvider>
+        <Footer />
+      </body>
+    </html>
   )
 }

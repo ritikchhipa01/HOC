@@ -1,14 +1,10 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-// let item;
-// if (typeof window !== 'undefined') {
-//     item =  || "[]");
-// }
 
 const initialState = {
     number: 0,
-    data: JSON.parse(localStorage.getItem("cards")) || [],
+    data: [],
 }
 const Slice = createSlice({
     name: "user",
@@ -18,11 +14,8 @@ const Slice = createSlice({
             state.number += 1;
         },
         addData: (state, action) => {
-            // console.log(action.payload);
-
-            state.data = action.payload;
-            let card = JSON.stringify(state.data);
-            localStorage.setItem("cards", card);
+         // console.log(action.payload);
+            state.data = action.payload; 
         }
     }
 })
