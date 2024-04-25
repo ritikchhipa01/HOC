@@ -1,10 +1,10 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-let item;
-if (typeof window !== 'undefined') {
-    item = JSON.parse(localStorage.getItem("cards") || "[]");
-}
+// let item;
+// if (typeof window !== 'undefined') {
+//     item =  || "[]");
+// }
 
 const initialState = {
     number: 0,
